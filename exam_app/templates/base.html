@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#101113">
+    <meta name="description" content="პირადი კინოკოლექცია — საყვარელი ფილმები და მათი რეიტინგები.">
+
+    <title>{% block title %}CINÉ — კინოს სამყარო{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="{% url 'home' %}" class="brand" aria-label="CINÉ — მთავარი გვერდი">
+                <span class="brand-icon">C</span>
+                <span class="brand-name">CINÉ<span class="brand-period">.</span></span>
+            </a>
+
+            <nav class="nav" aria-label="მთავარი ნავიგაცია">
+                <a href="{% url 'home' %}"
+                   class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                   {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>
+                    მთავარი
+                </a>
+
+                <a href="{% url 'films' %}"
+                   class="{% if request.resolver_match.url_name == 'films' %}active{% endif %}"
+                   {% if request.resolver_match.url_name == 'films' %}aria-current="page"{% endif %}>
+                    ფილმები
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a href="{% url 'home' %}" class="footer-brand">CINÉ<span class="brand-period">.</span></a>
+            <p>შექმნილია Django-თი</p>
+        </div>
+    </footer>
+</body>
+</html>

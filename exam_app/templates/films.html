@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}ფილმები — CINÉ{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+    <span class="eyebrow">
+        <span class="eyebrow-line"></span>
+        პირადი კოლექცია
+    </span>
+
+    <h1>ფილმები<span class="heading-period">.</span></h1>
+
+    <p class="page-description">
+        ისტორიები, ჟანრები და პერსონაჟები, რომლებიც კინოს დაუვიწყარს ხდის.
+    </p>
+</section>
+
+<section class="film-section">
+    <div class="list-heading">
+        <div>
+            <span class="section-kicker">რჩეული ნამუშევრები</span>
+            <h2>ჩემი ფილმების სია</h2>
+        </div>
+
+        <span class="film-count">
+            {{ movies|length|stringformat:"02d" }} ფილმი
+        </span>
+    </div>
+
+    <div class="film-list">
+        {% for movie in movies %}
+            <article class="film-row">
+                <div class="film-index">
+                    {{ forloop.counter|stringformat:"02d" }}
+                </div>
+
+                <div class="film-info">
+                    <h3>{{ movie.title }}</h3>
+
+                    {% if movie.imdb > 8 %}
+                        <span class="film-verdict verdict-good">
+                            <span class="verdict-dot"></span>
+                            კარგი ფილმია
+                        </span>
+                    {% else %}
+                        <span class="film-verdict verdict-standard">
+                            <span class="verdict-dot"></span>
+                            სტანდარტული ფილმია
+                        </span>
+                    {% endif %}
+                </div>
+
+                <div class="film-rating">
+                    <span class="rating-label">IMDb</span>
+                    <span class="rating-value">{{ movie.imdb|floatformat:1 }}</span>
+                    <span class="rating-out-of">/ 10</span>
+                </div>
+            </article>
+        {% empty %}
+            <div class="empty-state">
+                ფილმების სია ჯერ ცარიელია.
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="list-footer">
+        <span>კარგი ფილმი კარგ ისტორიას გვიყვება.</span>
+        <span class="list-footer-mark">CINÉ<span class="brand-period">.</span></span>
+    </div>
+</section>
+
+<a href="{% url 'home' %}" class="back-link">
+    <span aria-hidden="true">←</span>
+    მთავარ გვერდზე დაბრუნება
+</a>
+{% endblock %}

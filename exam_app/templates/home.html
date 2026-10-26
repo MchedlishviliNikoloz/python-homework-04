@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}მთავარი — CINÉ{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <span class="eyebrow">
+            <span class="eyebrow-line"></span>
+            შენი პირადი კინოკოლექცია
+        </span>
+
+        <h1>
+            დიდი ისტორიები.<br>
+            <span>დაუვიწყარი ფილმები.</span>
+        </h1>
+
+        <p class="hero-description">
+            აღმოაჩინე ფილმები, რომლებიც დიდხანს რჩება მეხსიერებაში.
+        </p>
+
+        <div class="hero-actions">
+            <a href="{% url 'films' %}" class="button button-primary">
+                <span>ფილმების აღმოჩენა</span>
+                <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <span class="hero-caption">შერჩეული ფილმები · პირადი რეიტინგები</span>
+        </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+        <div class="art-glow"></div>
+        <div class="art-circle art-circle-one"></div>
+        <div class="art-circle art-circle-two"></div>
+
+        <div class="film-symbol">
+            <span class="film-symbol-top">C</span>
+            <span class="film-symbol-bottom">CINÉ / 001</span>
+        </div>
+
+        <div class="art-label">
+            <span class="art-label-line"></span>
+            <span>THE ART OF CINEMA</span>
+        </div>
+    </div>
+</section>
+
+<section class="home-bottom">
+    <div class="bottom-item">
+        <span class="bottom-number">01</span>
+        <div>
+            <h2>საუკეთესო ფილმები</h2>
+            <p>ფილმები, რომლებიც ღირს სანახავად.</p>
+        </div>
+    </div>
+
+    <div class="bottom-item">
+        <span class="bottom-number">02</span>
+        <div>
+            <h2>პირადი შეფასებები</h2>
+            <p>თითოეულ ფილმს თავისი რეიტინგი აქვს.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
